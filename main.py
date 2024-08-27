@@ -1,6 +1,6 @@
 import os
 import subprocess
-from helpers.validation import Validation as valid
+from helpers.validation import Validation
 
 
 class ScraperMaker():
@@ -11,10 +11,10 @@ class ScraperMaker():
         self.directory = directory
         self.spyder_list = spyder_list
 
-
+        self.createDirectory()
 
     def createDirectory(self):
-        print(f'This is your directory path: "{self.main_file_path}+{self.directory}"\n')
+        print(f'This is your directory path: "{self.main_file_path}{self.directory}"\n')
         print(f"This is your list of spyders: {", ".join(map(str, self.spyder_list))}")
 
 
@@ -29,7 +29,8 @@ class ScraperMaker():
 
 
 if __name__ == "__main__":
-    start = valid()
+    valid = Validation()
+    start = valid.initialize()
     directory_name = start[0]
     spyder_list = start[1]
     ScraperMaker(directory_name, spyder_list)    
